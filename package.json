@@ -2,7 +2,7 @@
   "name": "sheetmusic",
   "version": "0.0.0",
   "description": "Make music from Google Spreadsheets",
-  "main": "browserify -o app.js src/main.js",
+  "main": "browserify -o app.js _main.js",
   "dependencies": {
     "tabletop": "~1.3.2"
   },
