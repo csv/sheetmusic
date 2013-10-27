@@ -4,6 +4,7 @@
   "description": "Make music from Google Spreadsheets",
   "main": "browserify -o app.js _main.js",
   "dependencies": {
+    "tabletop":"~1.1.0"
   },
   "devDependencies": {},
   "scripts": {
