@@ -18,12 +18,6 @@
       
     </script>
     <script type="text/javascript">
-      document.addEventListener('DOMContentLoaded', function() {
-        var gData
-        var KEY = "0Ao5u1U6KYND7dC1wekE1bThiaXF6dnBpMVBoV1VmR3c"
-        Tabletop.init( { key: KEY, callback: main, simpleSheet: true } ) 
-      }) 
-
 
       ///////////////////////////////////////////////
       // notes and scales
@@ -439,6 +433,14 @@ var t = 0;
 var BPM = 40;
 
 document.ready = function() {
+  document.addEventListener('DOMContentLoaded', function() {
+    var gData
+    var KEY = "0Ao5u1U6KYND7dC1wekE1bThiaXF6dnBpMVBoV1VmR3c"
+    Tabletop.init( { key: KEY, callback: main, simpleSheet: true } ) 
+  }) 
+}
+
+function main(data) {
   for (var i=0; i < myScale.length; i++) {
     oscillator = context.createOscillator();
     oscillator.frequency.value = frequencyFromNoteNumber(myScale[i]);
@@ -446,7 +448,6 @@ document.ready = function() {
     gainNode.connect(context.destination);
     gainNode.gain.value = 1;
     oscillator.start(t);
-//  playSound(hi_hat, t * 1000 / BPM)
     t += 0.1;
   }
 }

@@ -1,4 +1,4 @@
-window.main = function(data) {
+window.loadSheet = function(data) {
   var girth = data.map(function(row) {return 1 * row.girth})
 
   var max = Math.max.apply(Math,girth)
