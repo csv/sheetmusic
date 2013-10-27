@@ -9,6 +9,7 @@ window.main = function(data) {
 }
 
 window.playSound = function(audio, time) {
+  // Takes an audio element and a time in 
   setTimeout(function() {
     audio.currentTime = 0
     audio.play()
