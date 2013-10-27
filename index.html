@@ -432,25 +432,28 @@ var t = 0;
 
 var BPM = 40;
 
-document.ready = function() {
-  document.addEventListener('DOMContentLoaded', function() {
-    var gData
-    var KEY = "0Ao5u1U6KYND7dC1wekE1bThiaXF6dnBpMVBoV1VmR3c"
-    Tabletop.init( { key: KEY, callback: main, simpleSheet: true } ) 
-  }) 
+function main(dataNotScaled) {
+  loadSheet(dataNotScaled, function(data) {
+    for (var i=0; i < data.length; i++) {
+      noteNumber = Math.floor(data[i] * myScale.length)
+      console.log(noteNumber)
+      oscillator = context.createOscillator();
+      oscillator.frequency.value = frequencyFromNoteNumber(myScale[noteNumber]);
+      oscillator.connect(gainNode);
+      gainNode.connect(context.destination);
+      gainNode.gain.value = 1;
+      oscillator.start(t);
+      t += 0.3;
+      oscillator.stop(t);
+    }
+  })
 }
 
-function main(data) {
-  for (var i=0; i < myScale.length; i++) {
-    oscillator = context.createOscillator();
-    oscillator.frequency.value = frequencyFromNoteNumber(myScale[i]);
-    oscillator.connect(gainNode);
-    gainNode.connect(context.destination);
-    gainNode.gain.value = 1;
-    oscillator.start(t);
-    t += 0.1;
-  }
-}
+$(function() {
+  var gData
+  var KEY = "0Ao5u1U6KYND7dC1wekE1bThiaXF6dnBpMVBoV1VmR3c"
+  Tabletop.init( { key: KEY, callback: main, simpleSheet: true } ) 
+})
     </script>
   </body>
 </html>
