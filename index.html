@@ -8,8 +8,8 @@
   <body>
     <a href="https://docs.google.com/spreadsheet/ccc?key=0Ao5u1U6KYND7dC1wekE1bThiaXF6dnBpMVBoV1VmR3c#gid=0">Spreadsheet</a>
 
-    <audio id="kick" src="bass (6).WAV" />
-    <audio id="high-hat" src="808/hi hat (6).wav" />
+    <audio id="kick" src="808/bass (6).WAV" />
+    <audio id="hi-hat" src="808/hi hat (6).wav" />
     <audio id="snare" src="808/snare (6).WAV" />
     <script src="app.js" type="text/javascript"></script>
 
@@ -304,15 +304,6 @@ function sortNumber(a,b) {
     return a - b;
 }
 
-function playSound() {
-  // source is global so we can call .noteOff() later.
-  source = context.createBufferSource();
-  source.buffer = audioBuffer;
-  source.loop = false;
-  source.connect(context.destination);
-  source.start(0); // Play immediately.
-}
-
 function initSound(arrayBuffer) {
   context.decodeAudioData(arrayBuffer, function(buffer) {
     // audioBuffer is global to reuse the decoded audio later.
@@ -388,10 +379,9 @@ var myScale = buildScale(
 
 // //play beat
 
-// var kick = document.getElementsById('kick');
-// var snare = document.getElementsById('snare');
-// var hi_hat = document.getElementsById('hi-hat');
-
+var kick = document.getElementById('kick');
+var snare = document.getElementById('snare');
+var hi_hat = document.getElementById('hi-hat');
 
 // for (var bar = 0; bar < 2; bar++) {
 //   var time = startTime + bar * 8 * eighthNoteTime;
@@ -446,14 +436,19 @@ var myScale = buildScale(
 
 var t = 0;
 
-for (var i=0; i < myScale.length; i++) {
-  oscillator = context.createOscillator();
-  oscillator.frequency.value = frequencyFromNoteNumber(myScale[i]);
-  oscillator.connect(gainNode);
-  gainNode.connect(context.destination);
-  gainNode.gain.value = 1;
-  oscillator.start(t);
-  t += 0.1;
+var BPM = 40;
+
+document.ready = function() {
+  for (var i=0; i < myScale.length; i++) {
+    oscillator = context.createOscillator();
+    oscillator.frequency.value = frequencyFromNoteNumber(myScale[i]);
+    oscillator.connect(gainNode);
+    gainNode.connect(context.destination);
+    gainNode.gain.value = 1;
+    oscillator.start(t);
+    playSound(hi_hat, t * 1000 / BPM)
+    t += 0.1;
+  }
 }
     </script>
   </body>

@@ -5,9 +5,15 @@ window.main = function(data) {
   var max = Math.max.apply(Math,girth)
   var min = Math.min.apply(Math,girth)
 
-  g = girth.map(function(x){return (x - min)/(max - min) })
-  console.log(g)
-  window.girth = girth
+  girthScaled = girth.map(function(x){return (x - min)/(max - min) })
+  window.girthScaled = girthScaled
+}
+
+window.playSound = function(audio, time) {
+  setTimeout(function() {
+    audio.currentTime = 0
+    audio.play()
+  }, time)
 }
 
 },{}]},{},[1])
