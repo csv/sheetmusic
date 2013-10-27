@@ -7,9 +7,9 @@
   </head>
   <body>
     <a href="https://docs.google.com/spreadsheet/ccc?key=0Ao5u1U6KYND7dC1wekE1bThiaXF6dnBpMVBoV1VmR3c#gid=0">Spreadsheet</a>
-    <audio id="kick" src="kick.wav" />
-    <audio id="high-hat" src="high-hat.wav" />
-    <audio id="snare" src="snare.wav" />
+    <audio id="kick" src="bass (6).WAV" />
+    <audio id="high-hat" src="808/hi hat (6).wav" />
+    <audio id="snare" src= />
     <script src="app.js" type="text/javascript"></script>
     <script type="text/javascript">
       
@@ -20,6 +20,438 @@
         var KEY = "0Ao5u1U6KYND7dC1wekE1bThiaXF6dnBpMVBoV1VmR3c"
         Tabletop.init( { key: KEY, callback: main, simpleSheet: true } ) 
       }) 
+
+
+      ///////////////////////////////////////////////
+      // notes and scales
+var ACOUSTIC_SCALE = [0, 2, 4, 6, 7, 9, 10];
+var ADONAI_MALAKH = [0, 2, 4, 5, 7, 8, 10];
+var AEOLIAN_MODE = [0, 2, 3, 5, 7, 8, 10];
+var ALGERIAN_SCALE = [0, 2, 3, 6, 7, 8, 11];
+var ALTERED_SCALE = [0, 1, 3, 4, 6, 8, 10];
+var AUGMENTED_SCALE = [0, 3, 4, 7, 8, 11];
+var BEBOP_DOMINANT = [0, 2, 4, 5, 7, 9, 10, 11];
+var BLUES_SCALE = [0, 3, 5, 6, 7, 10];
+var DORIAN_MODE = [0, 2, 3, 5, 7, 9, 10];
+var DOUBLE_HARMONIC_SCALE = [0, 1, 4, 5, 7, 8, 11];
+var ENIGMATIC_SCALE = [0, 1, 4, 6, 8, 10, 11];
+var FLAMENCO_MODE = [0, 1, 4, 5, 7, 8, 11];
+var GYPSY_SCALE = [0, 2, 3, 6, 7, 8, 10];
+var HALF_DIMINISHED_SCALE = [0, 2, 3, 5, 6, 8, 10];
+var HARMONIC_MAJOR_SCALE = [0, 2, 4, 5, 7, 8, 11];
+var HARMONIC_MINOR_SCALE = [0, 2, 3, 5, 7, 8, 11];
+var HIRAJOSHI_SCALE = [0, 4, 6, 7, 11];
+var HUNGARIAN_GYPSY_SCALE = [0, 2, 3, 6, 7, 8, 11];
+var INSEN_SCALE = [0, 1, 5, 7, 10];
+var IONIAN_MODE = [0, 2, 4, 5, 7, 9, 11];
+var IWATO_SCALE = [0, 1, 5, 6, 11];
+var LOCRIAN_MODE = [0, 1, 3, 5, 6, 8, 10];
+var LYDIAN_AUGMENTED_SCALE = [0, 2, 4, 6, 8, 9, 11];
+var LYDIAN_MODE = [0, 2, 4, 6, 7, 9, 11];
+var MAJOR_LOCRIAN = [0, 2, 4, 5, 6, 8, 10];
+var MELODIC_MINOR_SCALE = [0, 2, 3, 5, 7, 9, 11];
+var MIXOLYDIAN_MODE = [0, 2, 4, 5, 7, 9, 10];
+var NEAPOLITAN_MAJOR_SCALE = [0, 1, 3, 5, 7, 9, 11];
+var NEAPOLITAN_MINOR_SCALE = [0, 1, 3, 5, 7, 8, 11];
+var PERSIAN_SCALE = [0, 1, 4, 5, 6, 8, 11];
+var PHRYGIAN_MODE = [0, 1, 3, 5, 7, 8, 10];
+var PROMETHEUS_SCALE = [0, 2, 4, 6, 9, 10];
+var TRITONE_SCALE = [0, 1, 4, 6, 7, 10];
+var UKRAINIAN_DORIAN_SCALE = [0, 2, 3, 6, 7, 9, 10];
+var WHOLE_TONE_SCALE = [0, 2, 4, 6, 8, 10];
+var MAJOR = [0, 2, 4, 5, 7, 9, 11];
+var MINOR = [0, 2, 3, 5, 7, 8, 10];
+var CHROMATIC = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+
+var chordLookup = {
+  "maj": [0,4,7],
+  "maj_no_fifth": [0,4],
+  "power": [0,7],
+  "sus": [0,5,7],
+  "sus2": [0,2,7],
+  "maj_six": [0,4,7,9],
+  "maj_six_no_fifth": [0,4,9],
+  "maj_six_nine": [0,4,9, 14],
+  "min": [0,3,7],
+  "min_no_fifth": [0,3],
+  "min_six": [0,3,7,9],
+  "min_six_no_fifth": [0,3,9],
+  "min_six_nine": [0,3,9, 14],
+  "dim": [0,3,6],
+  "aug": [0,4,8],
+  "maj7": [0,4,7,11],
+  "maj7_no_fifth": [0,4,11]
+};
+
+var noteLookup = {  
+  "C-1": 0,
+  "C#-1": 1,
+  "Db-1": 1,
+  "D-1": 2,
+  "D#-1": 3,
+  "Eb-1": 3,
+  "E-1": 4,
+  "F-1": 5,
+  "F#-1": 6,
+  "Gb-1": 6,
+  "G-1": 7,
+  "G#-1": 8,
+  "Ab-1": 8,
+  "A-1": 9,
+  "A#-1": 10,
+  "Bb-1": 10,
+  "B-1": 11,
+  "C0": 12,
+  "C#0": 13,
+  "Db0": 13,
+  "D0": 14,
+  "D#0": 15,
+  "Eb0": 15,
+  "E0": 16,
+  "F0": 17,
+  "F#0": 18,
+  "Gb0": 18,
+  "G0": 19,
+  "G#0": 20,
+  "Ab0": 20,
+  "A0": 21,
+  "A#0": 22,
+  "Bb0": 22,
+  "B0": 23,
+  "C1": 24,
+  "C#1": 25,
+  "Db1": 25,
+  "D1": 26,
+  "D#1": 27,
+  "Eb1": 27,
+  "E1": 28,
+  "F1": 29,
+  "F#1": 30,
+  "Gb1": 30,
+  "G1": 31,
+  "G#1": 32,
+  "Ab1": 32,
+  "A1": 33,
+  "A#1": 34,
+  "Bb1": 34,
+  "B1": 35,
+  "C2": 36,
+  "C#2": 37,
+  "Db2": 37,
+  "D2": 38,
+  "D#2": 39,
+  "Eb2": 39,
+  "E2": 40,
+  "F2": 41,
+  "F#2": 42,
+  "Gb2": 42,
+  "G2": 43,
+  "G#2": 44,
+  "Ab2": 44,
+  "A2": 45,
+  "A#2": 46,
+  "Bb2": 46,
+  "B2": 47,
+  "C3": 48,
+  "C#3": 49,
+  "Db3": 49,
+  "D3": 50,
+  "D#3": 51,
+  "Eb3": 51,
+  "E3": 52,
+  "F3": 53,
+  "F#3": 54,
+  "Gb3": 54,
+  "G3": 55,
+  "G#3": 56,
+  "Ab3": 56,
+  "A3": 57,
+  "A#3": 58,
+  "Bb3": 58,
+  "B3": 59,
+  "C4": 60,
+  "C#4": 61,
+  "Db4": 61,
+  "D4": 62,
+  "D#4": 63,
+  "Eb4": 63,
+  "E4": 64,
+  "F4": 65,
+  "F#4": 66,
+  "Gb4": 66,
+  "G4": 67,
+  "G#4": 68,
+  "Ab4": 68,
+  "A4": 69,
+  "A#4": 70,
+  "Bb4": 70,
+  "B4": 71,
+  "C5": 72,
+  "C#5": 73,
+  "Db5": 73,
+  "D5": 74,
+  "D#5": 75,
+  "Eb5": 75,
+  "E5": 76,
+  "F5": 77,
+  "F#5": 78,
+  "Gb5": 78,
+  "G5": 79,
+  "G#5": 80,
+  "Ab5": 80,
+  "A5": 81,
+  "A#5": 82,
+  "Bb5": 82,
+  "B5": 83,
+  "C6": 84,
+  "C#6": 85,
+  "Db6": 85,
+  "D6": 86,
+  "D#6": 87,
+  "Eb6": 87,
+  "E6": 88,
+  "F6": 89,
+  "F#6": 90,
+  "Gb6": 90,
+  "G6": 91,
+  "G#6": 92,
+  "Ab6": 92,
+  "A6": 93,
+  "A#6": 94,
+  "Bb6": 94,
+  "B6": 95,
+  "C7": 96,
+  "C#7": 97,
+  "Db7": 97,
+  "D7": 98,
+  "D#7": 99,
+  "Eb7": 99,
+  "E7": 100,
+  "F7": 101,
+  "F#7": 102,
+  "Gb7": 102,
+  "G7": 103,
+  "G#7": 104,
+  "Ab7": 104,
+  "A7": 105,
+  "A#7": 106,
+  "Bb7": 106,
+  "B7": 107,
+  "C8": 108,
+  "C#8": 109,
+  "Db8": 109,
+  "D8": 110,
+  "D#8": 111,
+  "Eb8": 111,
+  "E8": 112,
+  "F8": 113,
+  "F#8": 114,
+  "Gb8": 114,
+  "G8": 115,
+  "G#8": 116,
+  "Ab8": 116,
+  "A8": 117,
+  "A#8": 118,
+  "Bb8": 118,
+  "B8": 119,
+  "C9": 120,
+  "C#9": 121,
+  "Db9": 121,
+  "D9": 122,
+  "D#9": 123,
+  "Eb9": 123,
+  "E9": 124,
+  "F9": 125,
+  "F#9": 126,
+  "Gb9": 126,
+  "G9": 127
+};
+
+var rootLookup = {  
+  "C": 0,
+  "C#": 1,
+  "Db": 1,
+  "D": 2,
+  "D#": 3,
+  "Eb": 3,
+  "E": 4,
+  "F": 5,
+  "F#": 6,
+  "Gb": 6,
+  "G": 7,
+  "G#": 8,
+  "Ab": 8,
+  "A": 9,
+  "A#": 10,
+  "Bb": 10,
+  "B": 11
+};
+
+// Helper Functions
+function frequencyFromNoteName( noteName ) {
+  var note = noteLookup[noteName];
+  return 440 * Math.pow(2,(note-69)/12);
+}
+
+function frequencyFromNoteNumber( noteNumber ) {
+  return 440 * Math.pow(2,(noteNumber - 69)/12);
+}
+
+function sortNumber(a,b) {
+    return a - b;
+}
+
+function playSound() {
+  // source is global so we can call .noteOff() later.
+  source = context.createBufferSource();
+  source.buffer = audioBuffer;
+  source.loop = false;
+  source.connect(context.destination);
+  source.start(0); // Play immediately.
+}
+
+function initSound(arrayBuffer) {
+  context.decodeAudioData(arrayBuffer, function(buffer) {
+    // audioBuffer is global to reuse the decoded audio later.
+    audioBuffer = buffer;
+  }, function(e) {
+    console.log('Error decoding file', e);
+  }); 
+}
+
+// Load file from a URL as an ArrayBuffer.
+// Example: loading via xhr2: loadSoundFile('sounds/test.mp3');
+function loadSoundFile(url) {
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', url, true);
+  xhr.responseType = 'arraybuffer';
+  xhr.onload = function(e) {
+    initSound(this.response); // this.response is an ArrayBuffer.
+  };
+  xhr.send();
+}
+
+function buildScale(keyName, scale, minNote, maxNote) {
+  var key = rootLookup[keyName];
+  var minNote = noteLookup[minNote];
+  var maxNote = noteLookup[maxNote];
+  scale = scale.map(function(s) {return s + key});
+  console.log(key, minNote, maxNote, scale);
+  var newScale = [];
+  for (var i=0; i < scale.length; i++) {
+    for (var j=0; j<12; j++) {
+      var note = scale[i] + (12 * j);
+      if (note >= minNote && note <= maxNote) {
+        newScale.push(note);
+      }
+    } 
+  }
+  sortedScale = newScale.sort(sortNumber)
+  return sortedScale;
+}
+
+
+// Initialize audio
+var context;
+window.addEventListener('load', init, false);
+function init() {
+  try {
+    // Fix up for prefixing
+    window.AudioContext = window.AudioContext||window.webkitAudioContext;
+    context = new AudioContext();
+  }
+  catch(e) {
+    alert('Web Audio API is not supported in this browser');
+  }
+}
+init()
+
+var lowpassFilter = context.createBiquadFilter();
+var gainNode = context.createGain();
+var waveShaper = context.createWaveShaper();
+var panner = context.createPanner();
+var compressor = context.createDynamicsCompressor();
+var reverb = context.createConvolver();
+
+var myScale = buildScale(
+  keyName = 'E',
+  scale = [0,4,5,7,9],
+  minNote = 'E1',
+  maxNote = 'E9'
+
+);
+// var startTime = 0;
+// var eighthNoteTime = 0.1;
+
+// //play beat
+
+// var kick = document.getElementsById('kick');
+// var snare = document.getElementsById('snare');
+// var hi_hat = document.getElementsById('hi-hat');
+
+
+// for (var bar = 0; bar < 2; bar++) {
+//   var time = startTime + bar * 8 * eighthNoteTime;
+//   // Play the bass (kick) drum on beats 1, 5
+//   playSound(kick, time);
+//   playSound(kick, time + 4 * eighthNoteTime);
+
+//   // Play the snare drum on beats 3, 7
+//   playSound(snare, time + 2 * eighthNoteTime);
+//   playSound(snare, time + 6 * eighthNoteTime);
+
+//   // Play the hi-hat every eighth note.
+//   for (var i = 0; i < 8; ++i) {
+//     playSound(hihat, time + i * eighthNoteTime);
+//   }
+// }
+
+
+// window.onload = init;
+// var context;
+// var bufferLoader;
+
+// function init() {
+//   // Fix up prefixing
+//   window.AudioContext = window.AudioContext || window.webkitAudioContext;
+//   context = new AudioContext();
+
+//   bufferLoader = new BufferLoader(
+//     context,
+//     [
+//       '808/clap (6).WAV',
+//       '../sounds/hyper-reality/laughter.wav',
+//     ],
+//     finishedLoading
+//     );
+
+//   bufferLoader.load();
+// }
+
+// function finishedLoading(bufferList) {
+//   // Create two sources and play them both together.
+//   var source1 = context.createBufferSource();
+//   var source2 = context.createBufferSource();
+//   source1.buffer = bufferList[0];
+//   source2.buffer = bufferList[1];
+
+//   source1.connect(context.destination);
+//   source2.connect(context.destination);
+//   source1.start(0);
+//   source2.start(0);
+// }
+
+var t = 0;
+
+for (var i=0; i < myScale.length; i++) {
+  oscillator = context.createOscillator();
+  oscillator.frequency.value = frequencyFromNoteNumber(myScale[i]);
+  oscillator.connect(gainNode);
+  gainNode.connect(context.destination);
+  gainNode.gain.value = 1;
+  oscillator.start(t);
+  t += 0.1;
+}
     </script>
   </body>
 </html>
