@@ -1,3 +1,5 @@
+var crossfilter = require('crossfilter');
+
 window.main = function(data) {
-  console.log(data)
+  crossfilter(data)
 }
