@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Mozfest Locales</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.1.0/tabletop.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  </head>
+  <body>
+    
+  <script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+      var gData
+      var KEY = "0Ao5u1U6KYND7dHdISjFSczJZM3NsZDVQTmxfM2ozRnc"
+      Tabletop.init( { key: KEY, callback: showInfo, simpleSheet: true } ) 
+    }) 
+      
+    function showInfo(data) {
+      console.log(data)
+    }
+    </script>
+  </body>
+</html>
