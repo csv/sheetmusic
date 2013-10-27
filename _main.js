@@ -1,12 +1,9 @@
-var crossfilter = require('crossfilter');
-
 window.main = function(data) {
-  var cf = crossfilter(data)
-  var girth = cf.dimension(function(row) {return row.girth})
+  var girth = data.map(function(row) {return 1 * row.girth})
 
-  var max = girth.top(1)[0].girth
-  var min = girth.bottom(1)[0].girth
+  var max = Math.max.apply(Math,girth)
+  var min = Math.min.apply(Math,girth)
 
-  g = girth.group(function(x){return (x - min)/(max - min) })
-  console.log(g.all())
+  girthScaled = girth.map(function(x){return (x - min)/(max - min) })
+  window.girthScaled = girthScaled
 }
