@@ -7,3 +7,10 @@ window.main = function(data) {
   girthScaled = girth.map(function(x){return (x - min)/(max - min) })
   window.girthScaled = girthScaled
 }
+
+window.playSound = function(audio, time) {
+  setTimeout(function() {
+    audio.currentTime = 0
+    audio.play()
+  }, time)
+}
